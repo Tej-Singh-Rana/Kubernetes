@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: kube-app
+    labels:
+      name: front-end
+      app: myhost
+spec:
+   containers:
+   - image: nginx
+     imagePullPolicy: Always
+     name: test1
+   nodeName: node2     
