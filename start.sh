@@ -7,8 +7,8 @@ echo "To enable and restart service of docker and kubelet Press 4:"
 echo "To set kubernetes bash completion Press 5:"
 echo "To set kubeadm network, applicable only in "MasterNode" Press 6: "
 echo "To set kubernetes admin.conf, applicable only in "MasterNode" Press 7: "
-echo "To install calico configuration, applicable only in "MasterNode" Press 8: "
-read -r value
+echo -e "To install calico configuration, applicable only in "MasterNode" Press 8: \n "
+read -rp "Enter your press value here: " value
 
 if [ "$value" == 1 ];then
 	setenforce 0
@@ -41,7 +41,9 @@ elif [ "$value" == 7 ];then
 	chown $(id -u):$(id -g) $HOME/.kube/config
 elif [ "$value" == 8 ];then
 	kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
-
+else
+	echo "Try above press values only!! Bye `exit`"
+	
 fi
 
 
