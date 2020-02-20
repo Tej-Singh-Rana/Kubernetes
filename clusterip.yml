@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+     name: rozer1
+     labels:
+         name: r1
+         point: r1
+spec:
+   type: ClusterIP    #supported values: "ClusterIP", "ExternalName", "LoadBalancer", "NodePort"
+   selector:
+        name: r1
+   ports:                       #without defining ports, service will not create.
+     - port: 80
+       targetPort: 80
