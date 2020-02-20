@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deploy-2
+      labels:
+         name: deploy2
+         app: appv2
+spec:
+      template:
+         metadata:
+             name: nginx-2
+             labels:
+               name: r2
+               app: r2
+         spec:
+             containers:
+               - name: tej
+                 image: httpd
+      selector:
+          matchLabels:
+               name: r2
+      strategy:
+          type: Recreate
+     
+

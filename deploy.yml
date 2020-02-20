@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deploy-1
+      labels:
+         name: deploy1
+         app: appv1
+spec:
+      template:
+         metadata:
+             name: nginx-1
+             labels:
+               name: r1
+               app: r1
+         spec:
+             containers:
+               - name: rozer
+                 image: httpd
+      selector:
+          matchLabels:
+               name: r1
+     
+          
