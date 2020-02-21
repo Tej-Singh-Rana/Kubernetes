@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+     name: my-service
+     labels:
+        name: my-service1
+        role: service1
+spec:
+     type: clusterIP
+     clusterIP: 10.96.100.12
+     ports:
+      - port: 3306
+        targetPort: 3306
+        protocol: TCP
+     replicas: 1
+     selector: 
+         name: my-image
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deployer
+      labels:
+        name: deployer1
+        host: vegas
+spec:
+     template:
+        metadata:
+           name: deploy
+           labels:
+              name: my-image
+              app: deploy1
+        spec:
+            containers:
+              - name: database
+                image: 
+     selector:
+          matchLabels:
+                name: my-image 
