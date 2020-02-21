@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+     name: my-server
+     labels:
+        name: my-server1
+        role: server1
+spec:
+     type: NodePort
+     clusterIP: 10.96.100.13
+     ports:
+      - port: 80
+        targetPort: 80
+        nodePort: 32363
+        protocol: TCP
+     replicas: 1
+     selector: 
+         name: dev
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deployweb
+      labels:
+        name: deployerweb
+        host: las
+spec:
+     template:
+        metadata:
+           name: devops
+           labels:
+              name: dev
+              app: my-web
+        spec:
+            containers:
+              - name: website
+                image: 
+     selector:
+          matchLabels:
+                name: dev
