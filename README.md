@@ -9,9 +9,9 @@ metadata:
 spec:
 ```
 
-- kind             :        version
-  Pod                       v1
-  Service                   v1
-  ReplicationController     v1
-   ReplicaSet               apps/v1
-  Deployment                apps/v1
+- kind : version
+  - Pod : v1
+  - Service : v1
+  - ReplicationController : v1
+  - ReplicaSet : apps/v1
+  - Deployment : apps/v1
